@@ -1,0 +1,14 @@
+.pricing-card .btn {
+  padding: 0;
+  line-height: 1;
+}
+
+.pricing-description {
+  font-size: 12px;
+}
+
+@media (min-width: 768px) {
+  .card {
+  }
+}
+
