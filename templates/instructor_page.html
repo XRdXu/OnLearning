@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>{{course_org.name}}</title>
+    <title>InstructorDetailPage</title>
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/Boostrap-Tabs.css">
     <link rel="stylesheet" href="/static/css/Bootstrap-4---Product-List.css">
@@ -46,10 +46,8 @@
   <!-- For demo purpose -->
     <div class="row mb-5">
         <div class="col-lg-8 text-white py-4 text-center mx-auto">
-          <h1 style="color: black">{{course_org.name}}</h1>
-            <img width="200" class="scrollLoading" src="{{ MEDIA_URL }}{{ course_org.image }}"/>
-          <p style="color: black">{{course_org.desc_short}}</p>
-          </p>
+          <h1 style="color: black">{{instructor.name}}</h1>
+            <img width="200" class="scrollLoading" src="{{ MEDIA_URL }}{{ instructor.image }}"/>
         </div>
     </div>
   <!-- End -->
@@ -62,74 +60,21 @@
         <a id="home-tab" data-toggle="tab" href="#Intro" role="tab" aria-controls="home" aria-selected="true" class="nav-link border-0 text-uppercase font-weight-bold active">Introduction</a>
       </li>
       <li class="nav-item flex-sm-fill">
-        <a id="profile-tab" data-toggle="tab" href="#Instructor" role="tab" aria-controls="profile" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Instructors</a>
-      </li>
-      <li class="nav-item flex-sm-fill">
         <a id="contact-tab" data-toggle="tab" href="#Classes" role="tab" aria-controls="contact" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Courses</a>
       </li>
     </ul>
     <div id="myTabContent" class="tab-content">
       <div id="home" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
-        <p class="text-muted">{{ course_org.desc }}</p>
+        <p class="text-muted">{{ instructor.desc }}</p>
       </div>
     </div>
     <!-- End rounded tabs -->
   </div>
-
-
-  <div class="p-5 bg-white rounded shadow mb-5">
-    <!-- Bordered tabs-->
-    <ul id="Instructor" role="tablist" class="nav nav-tabs nav-pills flex-column flex-sm-row text-center bg-light border-0 rounded-nav">
-      <li class="nav-item flex-sm-fill">
-        <a id="home-tab" data-toggle="tab" href="#Intro" role="tab" aria-controls="home" aria-selected="true" class="nav-link border-0 text-uppercase font-weight-bold">Introduction</a>
-      </li>
-      <li class="nav-item flex-sm-fill">
-        <a id="profile-tab" data-toggle="tab" href="#Instructor" role="tab" aria-controls="profile" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold active">Instructors</a>
-      </li>
-      <li class="nav-item flex-sm-fill">
-        <a id="contact-tab" data-toggle="tab" href="#Classes" role="tab" aria-controls="contact" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Courses</a>
-      </li>
-    </ul>
-           <div class="container">
-        <div class="row product-list dev">
-            {% for teacher in all_teacher %}
-            <div class="col-sm-6 col-md-4 product-item animation-element slide-top-left">
-                <div class="product-container">
-                    <div class="row">
-                        <div class="col-md-12"><a class="product-image" href="#"><img src="{{ MEDIA_URL }}{{ teacher.image }}"></a></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-8">
-                            <h2><a href="#">{{ teacher.name }}</a></h2>
-                        </div>
-                        <div class="col-4"><a class="small-text" href="#">{{ teacher.work_position }} </a></div>
-                    </div>
-                    <div class="product-rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i><a class="small-text" href="#">This instructor is viewed by: {{ teacher.click_nums }} times</a></div>
-                    <div class="row">
-                        <div class="col-12">
-                            <p class="product-description">Instructor description: {{ teacher.desc }} </p>
-                            <div class="row">
-                                <div class="col-6"><button class="btn btn-light" type="button"><a href="{% url 'org:instructor_detail' teacher.id %}">View now!</a></button></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-  </div>
-    <!-- End bordered tabs -->
-  </div>
-
-
   <div class="p-5 bg-white rounded shadow mb-5">
     <!-- Lined tabs-->
     <ul id="Classes" role="tablist" class="nav nav-tabs nav-pills flex-column flex-sm-row text-center bg-light border-0 rounded-nav">
       <li class="nav-item flex-sm-fill">
         <a id="home-tab" data-toggle="tab" href="#Intro" role="tab" aria-controls="home" aria-selected="true" class="nav-link border-0 text-uppercase font-weight-bold">Introduction</a>
-      </li>
-      <li class="nav-item flex-sm-fill">
-        <a id="profile-tab" data-toggle="tab" href="#Instructor" role="tab" aria-controls="profile" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold">Instructors</a>
       </li>
       <li class="nav-item flex-sm-fill">
         <a id="contact-tab" data-toggle="tab" href="#Classes" role="tab" aria-controls="contact" aria-selected="false" class="nav-link border-0 text-uppercase font-weight-bold active">Courses</a>
@@ -165,6 +110,7 @@
   </div>
 
 </div>
+
     <script src="/static/bootstrap/js/bootstrap.min.js"></script>
     <script src="/static/js/bs-init.js"></script>
 </body>

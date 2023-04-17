@@ -36,8 +36,8 @@
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="{% url 'index' %}"><span style="color: rgba(255,255,255,0.9);">OnLearning</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1" style="background: #ffffff;padding: 2px 12px;margin: 0px;margin-top: -11px;"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#learning_track" style="color: rgba(255,255,255,0.9);">Learning Tracks</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" style="color: rgba(255,255,255,0.55);">Instructors</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{% url 'index' %}" style="color: rgba(255,255,255,0.9);">Learning Tracks</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url "org:instructors" %}" style="color: rgba(255,255,255,0.55);">Instructors</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url "org:list" %}" style="color: rgba(255,255,255,0.55);">Organizations</a></li>
                 </ul>
 
@@ -46,7 +46,7 @@
                         <path d="M4.968 9.75a.5.5 0 1 0-.866.5A4.498 4.498 0 0 0 8 12.5a4.5 4.5 0 0 0 3.898-2.25.5.5 0 1 0-.866-.5A3.498 3.498 0 0 1 8 11.5a3.498 3.498 0 0 1-3.032-1.75zM7 5.116V5a1 1 0 0 0-1-1H3.28a1 1 0 0 0-.97 1.243l.311 1.242A2 2 0 0 0 4.561 8H5a2 2 0 0 0 1.994-1.839A2.99 2.99 0 0 1 8 6c.393 0 .74.064 1.006.161A2 2 0 0 0 11 8h.438a2 2 0 0 0 1.94-1.515l.311-1.242A1 1 0 0 0 12.72 4H10a1 1 0 0 0-1 1v.116A4.22 4.22 0 0 0 8 5c-.35 0-.69.04-1 .116z"></path>
                         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-1 0A7 7 0 1 0 1 8a7 7 0 0 0 14 0z"></path>
                         </svg></a>
-                        <div class="dropdown-menu dropdown-menu-end show" data-bs-popper="none" style="padding-left: 0px;margin-left: 0px;transform: translate(74px);"><a class="dropdown-item" href="#">Profile</a><a class="dropdown-item link-danger" href="{% url 'logout' %}">Log out</a></div>
+                        <div class="dropdown-menu dropdown-menu-end show" data-bs-popper="none" style="padding-left: 0px;margin-left: 0px;transform: translate(74px);"><a class="dropdown-item" href="{% url 'users:info' %}">Profile</a><a class="dropdown-item link-danger" href="{% url 'logout' %}">Log out</a></div>
                     </div>
                 {% else %}
                     <a class="btn btn-primary me-3" href="{% url 'login' %}" type="button" style="background: var(--bs-btn-hover-color);color: var(--bs-navbar-brand-color);margin-right: 0px;">Login</a>
@@ -108,7 +108,7 @@
                         <ul class="video">
                             {% for video in lesson.video_set.all %}
                             <li>
-                                <a target="_blank" href='/video/3662' class="J-media-item studyvideo">{{ video.name }} ({{video.duration}} mins)
+                                <a target="_blank" href='{{ video.url }}' class="J-media-item studyvideo">{{ video.name }} ({{video.duration}} mins)
                                     <i class="study-state"></i>
                                 </a>
                             </li>

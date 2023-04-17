@@ -22,7 +22,7 @@
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a class="nav-link active" href="#learning_track" style="color: rgba(255,255,255,0.9);">Learning Tracks</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" style="color: rgba(255,255,255,0.55);">Instructors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url "org:instructors" %}" style="color: rgba(255,255,255,0.55);">Instructors</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url "org:list" %}" style="color: rgba(255,255,255,0.55);">Organizations</a></li>
                 </ul>
 
@@ -31,7 +31,7 @@
                         <path d="M4.968 9.75a.5.5 0 1 0-.866.5A4.498 4.498 0 0 0 8 12.5a4.5 4.5 0 0 0 3.898-2.25.5.5 0 1 0-.866-.5A3.498 3.498 0 0 1 8 11.5a3.498 3.498 0 0 1-3.032-1.75zM7 5.116V5a1 1 0 0 0-1-1H3.28a1 1 0 0 0-.97 1.243l.311 1.242A2 2 0 0 0 4.561 8H5a2 2 0 0 0 1.994-1.839A2.99 2.99 0 0 1 8 6c.393 0 .74.064 1.006.161A2 2 0 0 0 11 8h.438a2 2 0 0 0 1.94-1.515l.311-1.242A1 1 0 0 0 12.72 4H10a1 1 0 0 0-1 1v.116A4.22 4.22 0 0 0 8 5c-.35 0-.69.04-1 .116z"></path>
                         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-1 0A7 7 0 1 0 1 8a7 7 0 0 0 14 0z"></path>
                         </svg></a>
-                        <div class="dropdown-menu dropdown-menu-end show" data-bs-popper="none" style="padding-left: 0px;margin-left: 0px;transform: translate(74px);"><a class="dropdown-item" href="#">Profile</a><a class="dropdown-item link-danger" href="{% url 'logout' %}">Log out</a></div>
+                        <div class="dropdown-menu dropdown-menu-end show" data-bs-popper="none" style="padding-left: 0px;margin-left: 0px;transform: translate(74px);"><a class="dropdown-item" href="{% url 'users:info' %}">Profile</a><a class="dropdown-item link-danger" href="{% url 'logout' %}">Log out</a></div>
                     </div>
                 {% else %}
                     <a class="btn btn-primary me-3" href="{% url 'login' %}" type="button" style="background: var(--bs-btn-hover-color);color: var(--bs-navbar-brand-color);margin-right: 0px;">Login</a>
@@ -45,7 +45,7 @@
         <div data-bss-scroll-zoom="true" data-bss-scroll-zoom-speed="1" class="py-5 mb-0 ms-0 mt-0 ps-0 pt-0 pe-0 pb-0" style="background-image: url(&quot;/static/img/laptop-coding-terminal(1).jpg&quot;);background-position: center;background-size: cover;">
             <div class="d-md-flex flex-column justify-content-md-center align-items-md-center show-content ms-0 pt-4 ps-4 pe-4 pb-4 mb-0" style="text-align: center;">
                 <h1 style="font-weight: bold;">Follow the footsteps, <br>learn skills easily</h1>
-                <p>Our goal is to get beginners to learn a skill quickly, <br>rather than waste time gathering bits and pieces of knowledge.</p><button class="btn btn-primary" type="button" style="background: rgb(0,0,0);">Start Journey</button>
+                <p>Our goal is to get beginners to learn a skill quickly, <br>rather than waste time gathering bits and pieces of knowledge.</p>
             </div>
         </div>
     </section>
@@ -74,7 +74,7 @@
                     <div class="card ps-0" style="overflow: hidden;transform: scale(1);height: 80%;"><img class="card-img d-block ps-0 pt-0" src="{{ MEDIA_URL }}{{ course.instructor.image }}">
                         <div class="card-img-overlay d-flex flex-column align-items-start pt-3" style="padding-left: 15px;">
                             <h4 class="fs-4 fw-bold" style="color: rgb(0,0,0);">The instructor: {{ course.instructor.name }}</h4>
-                            <p style="color: rgb(36,36,36);">{{ course.instructor.desc }}</p><button class="btn btn-primary mt-auto" type="button" style="background: transparent;border-color: transparent;color: rgb(0,0,0);">Explore<i class="fas fa-arrow-right ps-0 ms-2 pb-0 pe-1 pt-1 mt-0"></i></button>
+                            <p style="color: rgb(36,36,36);">{{ course.instructor.desc }}</p><button class="btn btn-primary mt-auto" type="button" style="background: transparent;border-color: transparent;color: rgb(0,0,0);"><a href="{% url 'org:instructor_detail' course.instructor.id %}">Explore</a><i class="fas fa-arrow-right ps-0 ms-2 pb-0 pe-1 pt-1 mt-0"></i></button>
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                     <div class="card text-dark pricing-card">
                         <div class="card-body p-4 px-3 px-lg-4">
                             <h4 class="fs-3 fw-bold card-title">Youtube</h4>
-                            <p class="text-muted card-text pricing-description">Et torquent vel quis diam. Tempus ullamcorper rhoncus fames tellus sagittis sapien, pharetra egestas. Fringilla curabitur taciti metus, metus viverra.</p>
+                            <p class="text-muted card-text pricing-description">Enjoy the videos and music you love, upload original content, and share it all with friends, family, and the world on YouTube.</p>
                             <div class="d-flex justify-content-end"><button class="btn border rounded-circle border-0" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right-short fs-2">
                                         <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"></path>
                                     </svg></button></div>
@@ -100,8 +100,8 @@
                 <div class="col">
                     <div class="card text-dark pricing-card">
                         <div class="card-body p-4 px-3 px-lg-4">
-                            <h4 class="fs-3 fw-bold card-title">Plan 2</h4>
-                            <p class="text-muted card-text pricing-description">Pellentesque fringilla hendrerit, blandit donec rutrum curabitur praesent quisque. Rutrum tortor a, odio aenean sociosqu venenatis. Velit senectus est.</p>
+                            <h4 class="fs-3 fw-bold card-title">Udemy</h4>
+                            <p class="text-muted card-text pricing-description">Find the right instructor for you. Choose from many topics, skill levels, and languages. Shop...</p>
                             <div class="d-flex justify-content-end"><button class="btn border rounded-circle border-0" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right-short fs-2">
                                         <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"></path>
                                     </svg></button></div>
@@ -111,8 +111,8 @@
                 <div class="col">
                     <div class="card text-dark pricing-card">
                         <div class="card-body p-4 px-3 px-lg-4">
-                            <h4 class="fs-3 fw-bold card-title">Plan 3</h4>
-                            <p class="text-muted card-text pricing-description">Etiam donec aenean, aliquet eget aptent. Taciti auctor elit commodo, blandit aliquet rhoncus quam. Luctus fermentum habitasse malesuada, odio ante.</p>
+                            <h4 class="fs-3 fw-bold card-title">Bilibili</h4>
+                            <p class="text-muted card-text pricing-description">bilibili是国内知名的在线视频弹幕网站，拥有最棒的ACG氛围，哔哩哔哩内容丰富多元，涵盖动漫、电影、线上教育、在线音乐、娱乐时尚、科技生活、鬼畜视频等。</p>
                             <div class="d-flex justify-content-end"><button class="btn border rounded-circle border-0" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right-short fs-2">
                                         <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"></path>
                                     </svg></button></div>
@@ -122,8 +122,8 @@
                 <div class="col">
                     <div class="card text-dark pricing-card">
                         <div class="card-body p-4 px-3 px-lg-4">
-                            <h4 class="fs-3 fw-bold card-title">Plan 4</h4>
-                            <p class="text-muted card-text pricing-description">Ultricies suspendisse vivamus amet, lectus quam in eget. Rhoncus sit varius eu, ut conubia litora adipiscing sapien. Massa tempus primis.</p>
+                            <h4 class="fs-3 fw-bold card-title">CodeCombat</h4>
+                            <p class="text-muted card-text pricing-description">CodeCombat Worlds. Embark on a 3D coding adventure in Roblox, where you can program pets, play with friends, and develop games all while playing one.</p>
                             <div class="d-flex justify-content-end"><button class="btn border rounded-circle border-0" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right-short fs-2">
                                         <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"></path>
                                     </svg></button></div>
@@ -135,40 +135,6 @@
                 <div class="col text-center">
                     <p class="fs-5 fw-bold text-muted">Looking for more learning paths?</p>
                     <h3 class="display-4 fw-bold mb-5">More tutorials are coming soon.</h3>
-                </div>
-            </div>
-            <div class="row row-cols-2 justify-content-start">
-                <div class="col-sm-4 col-md-3 text-lg-start d-flex flex-column item">
-                    <h3 class="fs-6 text-white">Services</h3>
-                    <ul class="list-unstyled">
-                        <li><a class="link-light" href="#">Web design</a></li>
-                        <li><a class="link-light" href="#">Development</a></li>
-                        <li><a class="link-light" href="#">Hosting</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-4 col-md-3 text-lg-start d-flex flex-column item">
-                    <h3 class="fs-6 text-white">About</h3>
-                    <ul class="list-unstyled">
-                        <li><a class="link-light" href="#">Company</a></li>
-                        <li><a class="link-light" href="#">Team</a></li>
-                        <li><a class="link-light" href="#">Legacy</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-4 col-md-3 text-lg-start d-flex flex-column item">
-                    <h3 class="fs-6 text-white">Help Center</h3>
-                    <ul class="list-unstyled">
-                        <li><a class="link-light" href="#">Support portal</a></li>
-                        <li><a class="link-light" href="#">Help &amp; Docs</a></li>
-                        <li><a class="link-light" href="#">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-4 col-md-3 text-lg-start d-flex flex-column item">
-                    <h3 class="fs-6 text-white">Careers</h3>
-                    <ul class="list-unstyled">
-                        <li><a class="link-light" href="#">Job openings</a></li>
-                        <li><a class="link-light" href="#">Employee success</a></li>
-                        <li><a class="link-light" href="#">Benefits</a></li>
-                    </ul>
                 </div>
             </div>
             <hr>

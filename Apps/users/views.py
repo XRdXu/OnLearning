@@ -1,11 +1,35 @@
 from django.shortcuts import render
 from django.views.generic.base import View
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse
-from Apps.users.forms import RegisterForm
+from Apps.users.forms import RegisterForm, UploadImageForm
 from Apps.users.models import UserProfile
 from django.contrib.auth.hashers import make_password
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
+class UploadImageView(LoginRequiredMixin, View):
+    login_url = "/login/"
+
+    def post(self, request, *args, **kwargs):
+        image_form = UploadImageForm(request.POST, request.FILES, instance=request.user)
+        if image_form.is_valid():
+            image_form.save()
+            print(image_form.errors)
+            return JsonResponse({
+                "status":"success"
+            })
+        else:
+            return JsonResponse({
+                "status": "fail"
+            })
+
+
+class UserInfoView(LoginRequiredMixin,View):
+    login_url = "/login/"
+    def get(self, request, *args, **kwargs):
+        return render(request, "usercenter-info.html")
 
 
 class RegisterView(View):

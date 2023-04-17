@@ -4,24 +4,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>index</title>
+    <title>InstructorLists</title>
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/Animated-Pretty-Product-List-v12-Animated-Pretty-Product-List.css">
-    <link rel="stylesheet" href="/static/css/Boostrap-Tabs.css">
+    <link rel="stylesheet" href="/static/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="/static/css/Bootstrap-4---Product-List.css">
-    <link rel="stylesheet" href="/static/css/canito-detalle-producto.css">
-    <link rel="stylesheet" href="/static/css/Features-Image-images.css">
     <link rel="stylesheet" href="/static/css/Footer-with-Pricing.css">
     <link rel="stylesheet" href="/static/css/Login-with-overlay-image.css">
     <link rel="stylesheet" href="/static/css/Ludens-Client---Login-Dropdown.css">
     <link rel="stylesheet" href="/static/css/Ludens-Users---2-Register.css">
     <link rel="stylesheet" href="/static/css/Navbar-With-Button-icons.css">
-    <link rel="stylesheet" href="/static/css/Paralax-Hero-Banner.css">
-    <link rel="stylesheet" href="/static/css/Paralax-Hero-Banner-Hero-Technology.css">
     <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 
-<body style="background: rgb(255,255,255);">
+<body>
     <nav class="navbar navbar-light navbar-expand-md sticky-top bg-dark py-3" data-bs-spy="scroll">
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="{% url 'index' %}"><span style="color: rgba(255,255,255,0.9);">OnLearning</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1" style="background: #ffffff;padding: 2px 12px;margin: 0px;margin-top: -11px;"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
@@ -46,40 +41,39 @@
 
         </div>
     </nav>
-    <div class="bg-light border rounded border-light hero-technology jumbotron py-5 px-4" style="margin: 20px; background-image: url('/static/img/laptop-coding-terminal(1).jpg')">
-        <h1>Hello! {{ course.shoud_know }}</h1>
-        <p class="hero-subtitle">{{ course.desc }}</p>
-    </div>
-    <div class="container py-4 py-xl-5">
-        <div class="row row-cols-1 row-cols-md-2">
-            <div class="col"><img class="rounded w-100 h-100 fit-cover" style="min-height: 300px;" src="{{ MEDIA_URL }}{{ course.Images }}"></div>
-            <div class="col d-flex flex-column justify-content-center p-4">
-                <div class="text-center text-md-start d-flex flex-column align-items-center align-items-md-start mb-5">
-                    <div class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block mb-3 bs-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-book">
-                            <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"></path>
-                        </svg></div>
-                    <div>
-                        <h4>{{ course.name }}</h4>
-                        <p style="color: grey">{{ course.course_detail }}</p>
-                        <div class="product-rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i>This course is viewed by: <em>{{ course.number_of_clicks }}</em> times</div>
-                        <div class="product-rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i>Difficulty: <em>{{ course.difficulty }}</em></div>
-                        <div class="product-rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i>Catalog: <em>{{ course.category }}</em></div>
-                        <div class="product-rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i>Number of lessons: {{ course.lesson_set.all.count }}</div>
-                        <a href="{% url 'course:lesson' course.id %}">Start Lesson&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right">
-                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"></path>
-                            </svg></a>
-                    </div>
-                </div>
-                <div class="text-center text-md-start d-flex flex-column align-items-center align-items-md-start mb-5">
-                    <div>
-                        <h4>Course Instructor: {{ course.instructor.name }}</h4>
-                        <p style="color: grey">{{ course.instructor.desc }}</p><a href="{% url 'org:instructor_detail' course.instructor.id %}">See instructor page&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right">
-                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"></path>
-                            </svg></a>
-                    </div>
-                </div>
+    <div class="container">
+        <h1 style="margin: 23px;font-size: 23.52px;">INSTRUCTORS</h1><div class="container py-5">
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+
+      <!-- List group-->
+      <ul class="list-group shadow">
+
+          {% for ins in all_instructors %}
+            <li class="list-group-item">
+          <!-- Custom content-->
+          <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+            <div class="media-body order-2 order-lg-1">
+              <h5 class="mt-0 font-weight-bold mb-2">{{ ins.name }}</h5>
+                <h6 class="font-italic text-muted mb-0 small">{{ ins.work_position }}</h6>
+              <div class="d-flex align-items-center justify-content-between mt-1">
+                  <h6 class="font-weight-bold my-2">Words from the instructor: {{ ins.desc }}</h6>
+              </div>
+                <h6 class="font-weight-bold my-2">This instructor is from: {{ ins.org.name }}</h6>
             </div>
-        </div>
+              <a href="{% url 'org:instructor_detail' ins.id %}"><img width="200" class="scrollLoading" src="{{ MEDIA_URL }}{{ ins.image }}"/></a>
+          </div>
+          <!-- End -->
+        </li>
+          {% endfor %}
+
+      </ul>
+      <!-- End -->
+    </div>
+  </div>
+</div>
+
     </div>
     <footer class="text-white bg-dark">
         <div class="container py-4 py-lg-5 mt-4">
@@ -102,8 +96,6 @@
     </footer>
     <script src="/static/bootstrap/js/bootstrap.min.js"></script>
     <script src="/static/js/bs-init.js"></script>
-    <script src="/static/js/Animated-Pretty-Product-List-v12-Animated-Pretty-Product-List.js"></script>
-    <script src="/static/js/Paralax-Hero-Banner-untitled.js"></script>
 </body>
 
 </html>

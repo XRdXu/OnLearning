@@ -23,7 +23,7 @@ from WebOnlineCourse.settings import MEDIA_ROOT
 import xadmin
 
 from Apps.users.views import LoginView, LogoutView, RegisterView
-from Apps.organizations.views import OrgView
+from Apps.organizations.views import OrgView, InstructorsListView
 from Apps.operations.views import IndexView
 
 urlpatterns = [
@@ -39,7 +39,12 @@ urlpatterns = [
     url(r'org/', include(('Apps.organizations.urls', "organization"), namespace="org")),
 
     url(r'course/', include(('Apps.courses.urls', "courses"), namespace="course")),
+
     url(r'^op/', include(('Apps.operations.urls', "operations"), namespace="op")),
+
+    url(r'instructors/', include(('Apps.organizations.urls', "instructors"), namespace="instructors")),
+
+    url(r'users/', include(('Apps.users.urls', "users"), namespace="users")),
 ]
 
 
