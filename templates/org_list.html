@@ -58,9 +58,8 @@
               <h5 class="mt-0 font-weight-bold mb-2">{{ org.name }}</h5>
                 <h6 class="font-italic text-muted mb-0 small">{{ org.address }}</h6>
               <div class="d-flex align-items-center justify-content-between mt-1">
-                <h6 class="font-weight-bold my-2">Students who are currently learning from this org: {{ org.number_of_students }}</h6>
+                <h6 class="font-weight-bold my-2">{{ org.desc_short }}</h6>
               </div>
-                <h6 class="font-weight-bold my-2">Number of courses from this org: {{ org.number_of_courses }}</h6>
             </div>
               <a href="{% url 'org:home' org.id %}"><img width="200" class="scrollLoading" src="{{ MEDIA_URL }}{{ org.image }}"/></a>
           </div>

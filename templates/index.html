@@ -73,8 +73,8 @@
                 <div class="col-md-6">
                     <div class="card ps-0" style="overflow: hidden;transform: scale(1);height: 80%;"><img class="card-img d-block ps-0 pt-0" src="{{ MEDIA_URL }}{{ course.instructor.image }}">
                         <div class="card-img-overlay d-flex flex-column align-items-start pt-3" style="padding-left: 15px;">
-                            <h4 class="fs-4 fw-bold" style="color: rgb(0,0,0);">The instructor: {{ course.instructor.name }}</h4>
-                            <p style="color: rgb(36,36,36);">{{ course.instructor.desc }}</p><button class="btn btn-primary mt-auto" type="button" style="background: transparent;border-color: transparent;color: rgb(0,0,0);"><a href="{% url 'org:instructor_detail' course.instructor.id %}">Explore</a><i class="fas fa-arrow-right ps-0 ms-2 pb-0 pe-1 pt-1 mt-0"></i></button>
+                            <h4 class="fs-4 fw-bold" style="color: rgb(255,255,255);">The instructor: {{ course.instructor.name }}</h4>
+                            <p style="color: rgb(199,199,199);">{{ course.instructor.desc }}</p><button class="btn btn-primary mt-auto" type="button" style="background: transparent;border-color: transparent;color: rgb(0,0,0);"><a href="{% url 'org:instructor_detail' course.instructor.id %}">Explore</a><i class="fas fa-arrow-right ps-0 ms-2 pb-0 pe-1 pt-1 mt-0"></i></button>
                         </div>
                     </div>
                 </div>
