@@ -3,10 +3,32 @@ from django.views.generic.base import View
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse
-from Apps.users.forms import RegisterForm, UploadImageForm
+from Apps.users.forms import RegisterForm, UploadImageForm, UserInfoForm, ChangePwdForm
 from Apps.users.models import UserProfile
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.mixins import LoginRequiredMixin
+
+
+class ChangePwdView(View):
+    def post(self, request, *args, **kwargs):
+        pwd_form = ChangePwdForm(request.POST)
+        if pwd_form.is_valid():
+            pwd1 = request.POST.get("password1", "")
+            pwd2 = request.POST.get("password2", "")
+            if pwd1 != pwd2:
+                return JsonResponse({
+                    "status":"fail",
+                    "msg": "Two passwords are not identical"
+                })
+            user = request.user
+            user.set_password(pwd1)
+            user.save()
+            return JsonResponse({
+                "status": "success",
+            })
+        else:
+            return JsonResponse(pwd_form.errors)
+
 
 
 class UploadImageView(LoginRequiredMixin, View):
@@ -30,6 +52,16 @@ class UserInfoView(LoginRequiredMixin,View):
     login_url = "/login/"
     def get(self, request, *args, **kwargs):
         return render(request, "usercenter-info.html")
+    def post(self, request, *args, **kwargs):
+        user_info_form = UserInfoForm(request.POST, instance=request.user)
+        if user_info_form.is_valid():
+            user_info_form.save()
+            return JsonResponse({
+                "status": "success"
+            })
+        else:
+            return JsonResponse(user_info_form.errors)
+
 
 
 class RegisterView(View):

@@ -260,7 +260,7 @@ $(function(){
             data:$jsEditUserForm.serialize(),
             async: true,
             beforeSend:function(XMLHttpRequest){
-                _self.val("保存中...");
+                _self.val("saving...");
                 _self.attr('disabled',true);
             },
             success: function(data) {
@@ -272,13 +272,13 @@ $(function(){
                    _showValidateError($('#address'), data.address);
                 }else if(data.status == "fail"){
                      Dml.fun.showTipsDialog({
-                        title: '保存失败',
+                        title: 'save error',
                         h2: data.msg
                     });
                 }else if(data.status == "success"){
                     Dml.fun.showTipsDialog({
-                        title: '保存成功',
-                        h2: '个人信息修改成功！'
+                        title: 'Success',
+                        h2: 'Successfully modified!'
                     });
                     setTimeout(function(){window.location.href = window.location.href;},1500);
                 }
