@@ -99,7 +99,7 @@
 						</li>
 						<li>Gender:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio"  name="gender" value="male" {% if user.gender == 'male' %}checked="checked"{% endif %}>Male</label>
-							<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="gender" value="female">{% if user.gender == 'female' %}checked="checked"{% endif %}Female</label>
+							<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="gender" value="female" {% if user.gender == 'female' %}checked="checked"{% endif %}>Female</label>
 						</li>
 						<li class="p_infor_city">Address:&nbsp;&nbsp;&nbsp;&nbsp;
                             <input type="text" name="address" id="address" placeholder="Please enter your address" value="{{ user.address|default_if_none:'' }}" maxlength="10">
