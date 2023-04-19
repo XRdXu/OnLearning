@@ -1,2 +1,2 @@
-# WebOnlineCourse
- OnlineCoursePlatform
+# OnLearning Project
+ OnLearning Project
